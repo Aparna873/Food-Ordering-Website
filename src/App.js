@@ -6,9 +6,9 @@ import { Contact } from './pages/contact';
 import { Main } from './pages/home';
 import { Menu } from './pages/menu';
 import {Error} from './pages/error';
-import { SignIn } from './pages/signin';
-import { Order } from './pages/order';
 import { Navbar } from './component/nav/navbar';
+import { Login } from './pages/login';
+import { SignIn } from './pages/signup';
 function App() {
   return (
     <div className="App">
@@ -20,7 +20,7 @@ function App() {
           <Route path="/home" element={<Main/>} />
           <Route path="/menu" element={<Menu/>} />
           <Route path="/sign" element={<SignIn/>} />
-          <Route path="/order" element={<Order/>} />
+          <Route path="/log" element={<Login/>} />
           <Route path="*" element={<Error/>} />
         </Routes>
       </Router>

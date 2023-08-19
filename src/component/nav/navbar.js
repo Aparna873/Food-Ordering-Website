@@ -14,9 +14,8 @@ export const Navbar = () => {
                     <Link to="/contact">CONTACT</Link>
                     </div>
                 <div className="right">
-                    <Link to="/sign">SIGN IN</Link>
-                    <Link to="/order"><button className="btn-order">ORDER</button></Link>
-               
+                <Link to="/log">LOG IN</Link>
+                    <Link to="/sign">SIGN UP</Link>
                 </div>
             </div>
     );
