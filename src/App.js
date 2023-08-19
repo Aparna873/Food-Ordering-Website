@@ -8,14 +8,12 @@ import { Menu } from './pages/menu';
 import {Error} from './pages/error';
 import { SignIn } from './pages/signin';
 import { Order } from './pages/order';
-import { Card } from './component/cards/card';
 import { Navbar } from './component/nav/navbar';
 function App() {
   return (
     <div className="App">
       <Router>
       <Navbar/>
-      <Card/>
         <Routes>
           <Route path="/about" element={<About/>} />
           <Route path="/contact" element={<Contact/>} />
