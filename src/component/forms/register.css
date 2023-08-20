@@ -1,18 +1,67 @@
 .Register
 {
-    background-color: lightgray;
     display: flex;
-   justify-content: center;
-   width: 500px;
+    justify-content: center;
+    width: 100vw;
+    height: 70vh;
+    margin-top: 100px;
 }
 .create-form
 {
-display: flex;
-flex-direction: column;
-align-items: center;
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+   background-image: url(../../images/form-bg.jpg);
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   width: 450px;
+   border-radius: 8px;
+   box-shadow: 0 9px 9px 0 rgba(0,0,0,.188);
 }
 .input-1
 {
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
+}
+.input-1 input
+{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    width: 350px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-color: azure;
+    border-radius: 8px;
+}
+.input-1 button
+{
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-color: rgb(195, 192, 192);
+    background-color: rgb(158, 154, 154);
+    border-radius: 8px;
+    font-weight: 700;
+}
+.create-form h1
+{
+    margin-top: 30px;
+    color: rgb(25, 26, 26);
+}
+.create-form p
+{  
+    color: rgb(208, 206, 206);
+    margin-top: 30px;
+}
+.link-1
+{
+    text-decoration: none;
+    font-size: 18px;
+    color: rgb(31, 212, 22);
 }

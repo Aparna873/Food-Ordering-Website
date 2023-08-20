@@ -1,15 +1,20 @@
 import React from "react";
 import './../forms/logpage.css';
+import { Link } from "react-router-dom";
 export const CreateLogin=()=>{
     return (
-        <div>
-            <h1>Welsome Back!</h1>
+        <div className="Register-2">
+          <div className="login-form">
+          <h1>Welcome Back!</h1>
             <form>
-            <input placeholder="Full Name"/>
+            <div className="input-2">
+            <input placeholder="Email"/>
                 <input placeholder="Password"/>
                 <button>Login</button>
-                <h4>New User?</h4>
+            </div>
+            <p>New User? <Link className="link-2">Register</Link></p>
             </form>
+          </div>
         </div>
     )
 }

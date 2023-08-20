@@ -1,0 +1,16 @@
+.menuItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 40px;
+    margin-left: 100px;
+}
+.menuItem div
+{
+border-top-left-radius: 15px;
+border-top-right-radius: 15px;
+width: 200%;
+height: 200px;
+background-position: center;
+background-size: cover;
+}
