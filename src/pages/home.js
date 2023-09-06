@@ -1,11 +1,10 @@
 import React from "react";
-import { Background } from "../component/background/baackground";
-import { Card } from "../component/cards/card";
+import "./../styles/home.css";
+import { Background } from "../component/background/home-bg";
 export const Main=()=>{
     return(
          <div>  
             <Background/>
-            <Card/>
          </div>
     );
 };

@@ -5,11 +5,12 @@ import Breakfast from '../../images/breakfast.png';
 import Lunch from '../../images/lunch.png';
 import Dinner from '../../images/dinner.png';
 import { MenuList } from "../../helpers/menu-list";
-import { MenuItem } from "../menu-item";
+import MenuItem from "../../component/menu-item";
+
 export const FoodMenu=()=>{
     const [activeCategory,setActiveCategory] =useState('All');
     const filteredMenuItem=MenuList.filter(item=>{
-        if(activeCategory==='all')
+        if(activeCategory==='All')
         {
             return true;
         }
@@ -27,21 +28,23 @@ export const FoodMenu=()=>{
     return (
         <div className="main-menu">
             <div className="menu">
-            <p className="title">OUR MENU</p>
             <h1 className="menu-title">Wake Up Early,<span> Eat Fresh & Healthy</span></h1>
-          <main>
           <div className="buttons">
             <button onClick={allclicked}><img src={All}/> All</button>
             <button onClick={breakfastclicked}><img src={Breakfast}/> Breakfast</button>
             <button onClick={() => setActiveCategory('Lunch')}><img src={Lunch}/>Lunch</button>
             <button onClick={() => setActiveCategory('Dinner')}><img src={Dinner}/> Dinner</button>
-            <div>
-                {filteredMenuItem.map(item=>(
-                   <h1>{item.name}</h1>
-                ))}
             </div>
+            <div className="menu-list">
+                {filteredMenuItem.map((item,key)=>{
+                    return <MenuItem 
+                    key={key}
+                    image={item.image} 
+                    name={item.name} 
+                    price={item.price} 
+                    type={item.type}/>
+                })}
             </div>
-          </main>
         </div>
         </div>
     )

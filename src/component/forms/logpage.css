@@ -1,3 +1,6 @@
+*{
+    font-family: poppins,sans-serif;
+}
 .Register-2
 {
     display: flex;
@@ -10,13 +13,14 @@
 {
     display: flex;
     flex-direction: column;
-    background-image: url(../../images/form-bg.jpg);
+    background-color: rgb(250, 245, 245);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     width: 400px;
     border-radius: 8px;
     align-items: center;
+    box-shadow: 0 3px 6px 0  rgb(164, 162, 162);
 }
 .input-2
 {
@@ -28,36 +32,42 @@
     
     margin-top: 20px;
     margin-bottom: 10px;
-    padding-top: 10px;
-    width: 350px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 280px;
     padding-bottom: 10px;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 5px;
     border-color: azure;
     border-radius: 8px;
+    border: 1px solid rgb(198, 195, 195);
 }
 .input-2 button{
     margin-top: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-color: rgb(195, 192, 192);
-    background-color: rgb(158, 154, 154);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border:none;
+    background-color: orange;
     border-radius: 8px;
     font-weight: 700;
+    color: white;
 }
 .login-form h1{
 margin-top: 40px;
+color: #EC994B;
+font-weight: 700;
 }
 .login-form p
 {
-color: aliceblue;
+color:rgb(78, 76, 76);
+font-size: 15px;
 margin-top: 30px;
 }
 .link-2
 {
     text-decoration: none;
-    font-size: 18px;
-    color: rgb(31, 212, 22);
+    font-size: 14px;
+    color: orange;
 }
