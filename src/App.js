@@ -10,6 +10,7 @@ import { Navbar } from './component/nav/navbar';
 import { Login } from './pages/login';
 import { SignIn } from './pages/signup';
 // import { Footer } from './component/footer';
+
 function App() {
   return (
     <div className="App">
