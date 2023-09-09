@@ -10,7 +10,7 @@ export const Navbar = () => {
                     <img src={Logo} width={50} height={45}/>
                 </div>
                 <div className="left">
-                    <Link to="/home">HOME</Link>
+                    <Link to="/">HOME</Link>
 
                     <Link to="/menu">MENU</Link>
 
