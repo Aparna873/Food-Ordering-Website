@@ -9,17 +9,22 @@ import {Error} from './pages/error';
 import { Navbar } from './component/nav/navbar';
 import { Login } from './pages/login';
 import { SignIn } from './pages/signup';
-// import { Footer } from './component/footer';
-// import {auth} from "./firebase-config"
-// import {createUserWithEmailAndPassword} from 'firebase/auth';
+import { createContext , useEffect} from 'react';
+import {auth} from "./firebase-config";
 
+export const AppContext=createContext();
 function App() {
-  // const [registerEmail,setRegisterEmail]=useState("");
-  // const [registerPassword,setRegisterPassword]=useState("");
-  // const [loginEmail,setLoginEmail]=useState("");
-  // const [loginPassword,setLoginPassword]=useState("");
+
+  const [userdata,setUserdata]=useState([]);
+
+  useEffect(()=>{
+    auth.onAuthStateChanged((user)=>{
+      setUserdata(user)
+    })
+  })
   return (
     <div className="App">
+      <AppContext.Provider value={{userdata,setUserdata}}>
       <Router>
       <Navbar/>
         <Routes>
@@ -32,6 +37,7 @@ function App() {
           <Route path="*" element={<Error/>} />
         </Routes>
       </Router>
+      </AppContext.Provider >
     </div>
   );
 }

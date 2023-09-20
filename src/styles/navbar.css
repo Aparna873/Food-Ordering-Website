@@ -6,6 +6,9 @@
   font-family: Arial, Helvetica;
   background-color: transparent;
   font-weight: 600;
+  justify-content: space-between;
+  padding: 18px 45px;
+  align-items: center;
 }
 .nav-bar .Left-nav{
   display: flex;
@@ -14,15 +17,21 @@
 .nav-bar .logo
 {
   display: flex;
-  margin-left: 10px;
-  margin-top: 10px;
+  flex-direction: row;
+  justify-content: center;
+  height: 50px;
+  margin-left: 20px;
+}
+.nav-bar .logo img
+{
+  margin-right: 0;
 }
 .nav-bar .left
 {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin-top: 20px;
+ align-items: center;
+ margin-left: 200px;
 }
 .nav-bar .left a
 {
@@ -30,7 +39,7 @@
   flex-direction: row;
   color: black;
   text-decoration: none;
-  margin-left: 60px;
+  padding: 0 30px;
 }
 .nav-bar .Right-nav{
   display: flex;
@@ -55,7 +64,7 @@ padding-bottom: 5px;
 {
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
+  align-items: center;
 }
 .nav-bar .right a
 {
@@ -67,8 +76,46 @@ padding-bottom: 5px;
   margin-right: 15px;
 }
 .nav-bar .Left-nav .left a:hover{
-  color: orange;
+  color: #D07000;
 }
-.nav-bar .Right-nav .right a:hover{
-  color: orange;
+/* .nav-bar .Right-nav .right a:hover{
+  color: #D07000;
+} */
+.nav-bar .logo h2
+{
+  display: flex;
+ flex-direction: row;
+ align-items: center;
+  font-size: 35px;
+  margin-left: 0;
+  font-weight: 00;
+  font-family:  Helvetica,system-ui, 'Segoe UI','Open Sans', 'Helvetica Neue';
+}
+.nav-bar .Right-nav .right .register-btn
+{
+  padding: 15px 0;
+  background-color: #D07000;
+  border-radius: 4px;
+}
+@media(max-width:780px)
+{
+   .nav-bar .Left-nav .left 
+    {
+      display: none;
+    } 
+    .nav-bar .Right-nav {
+      display: none;
+    }
+    .nav-bar 
+    {
+    margin-left: -64px;
+    }
+    .nav-bar .logo h2
+    {
+      font-size: 25px;
+    }
+    .nav-bar .logo img
+    {
+      height: 45px;
+    }
 }

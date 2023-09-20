@@ -49,14 +49,14 @@
     padding-left: 5px;
     padding-right: 5px;
     border:none;
-    background-color: orange;
+    background-color: #D07000;
     border-radius: 8px;
     font-weight: 700;
     color: white;
 }
 .login-form h1{
 margin-top: 40px;
-color: #EC994B;
+color: #D07000;
 font-weight: 700;
 }
 .login-form p
@@ -69,5 +69,5 @@ margin-top: 30px;
 {
     text-decoration: none;
     font-size: 14px;
-    color: orange;
+    color: #D07000;
 }

@@ -1,0 +1,117 @@
+.contact
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10%;
+}
+.contact-1
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    width: 500px;
+    height: 228px;
+}
+.contact-2
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    width: 500px;
+}
+.contact-2 input
+{
+    margin-top: 18px;
+   padding: 15px;
+}
+.contact-2  textarea
+{
+    padding-top: 15px;
+    margin-top: 18px;
+    padding-bottom: 50px;
+    padding-left: 15px;
+}
+.contact-2  button{
+    margin-top: 18px;
+    width: 130px;
+    padding: 10px;
+    background-color: #D07000;
+    text-decoration: none;
+    border: none;
+    color: aliceblue;
+    border-radius: 4px;
+}
+.contact-1 .image img
+{
+width: 5%;
+display: flex;
+flex-direction: row;
+}
+.contact-1 .image span
+{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.contact-1 .head
+{
+    text-align: left;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.contact-1 .image{
+   margin-bottom: 29px;
+}
+.contact-1 .image span p{
+    margin-left: 15px;
+}
+.contact-2 .name
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.contact-2 .name input
+{
+width: 48%;
+}
+@media(max-width:780px)
+{
+.contact
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10%;
+}
+.contact-1 .head
+{
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+.contact-1 .image
+{
+    font-size: 0.9rem; 
+}
+.contact-1
+{
+    margin-left: 20px;
+}
+    .contact-2 .name 
+    {
+        justify-content: space-around;
+    }
+    .contact-2 input
+{
+   margin-left: 42px;
+}
+.contact-2 textarea
+{
+margin-left: 42px;
+} 
+.contact-2  button{
+    margin-left: 42px;
+}
+}
