@@ -2,7 +2,7 @@ import React , {useState} from "react";
 import './../forms/logpage.css';
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase-config";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword , updateProfile} from "firebase/auth";
 export const CreateLogin=()=>{
   const [loginEmail,setLoginEmail]=useState("");
   const [loginPassword,setLoginPassword]=useState("");
@@ -10,11 +10,13 @@ export const CreateLogin=()=>{
   const login= async()=>
     {
       try {
-        const user = await signInWithEmailAndPassword(
+        const userCredential = await signInWithEmailAndPassword(
           auth,
           loginEmail,
           loginPassword
         );
+        const user = userCredential.user;
+        await updateProfile(user, { displayName: loginEmail });
         navigate('/');
         console.log(user);
       } 

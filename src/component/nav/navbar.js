@@ -41,7 +41,7 @@ export const Navbar = () => {
                 <div className="right">
                     {user ? (
                         <>
-                            <span>{user.displayName}</span>
+                         <span>{user.displayName}</span>
                             <Link to="#" onClick={logout}>Log Out</Link>
                         </>
                     ) : (
