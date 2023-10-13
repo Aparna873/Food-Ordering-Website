@@ -3,7 +3,7 @@ import B2 from "./../../assets/brands/b2.png";
 import B3 from "./../../assets/brands/b3.png";
 import B4 from "./../../assets/brands/b4.png";
 import B5 from "./../../assets/brands/b5.png";
-import "../../styles/home.css";
+import "../background/home-bg2.css"
 export const Company=()=>{
 return <div className="bg-2">
     <h2>TRUSTED BY 70+ COMPANIES</h2>

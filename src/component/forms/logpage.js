@@ -2,21 +2,26 @@ import React , {useState} from "react";
 import './../forms/logpage.css';
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase-config";
-import { signInWithEmailAndPassword , updateProfile} from "firebase/auth";
+import Back from "../../assets/register-bg.jpg"
+import { signInWithEmailAndPassword , updateProfile , getAuth} from "firebase/auth";
 export const CreateLogin=()=>{
   const [loginEmail,setLoginEmail]=useState("");
   const [loginPassword,setLoginPassword]=useState("");
-  const navigate=useNavigate();
+  const [loginName,setLoginName]=useState("");
+  const navigate = useNavigate();
+  const authInstance = getAuth();
   const login= async()=>
     {
       try {
         const userCredential = await signInWithEmailAndPassword(
-          auth,
+          authInstance,
           loginEmail,
           loginPassword
         );
         const user = userCredential.user;
-        await updateProfile(user, { displayName: loginEmail });
+        if (loginName) {
+          await updateProfile(user, { displayName: loginName });
+        }
         navigate('/');
         console.log(user);
       } 
@@ -27,7 +32,10 @@ export const CreateLogin=()=>{
     return (
         <div className="Register-2">
           <div className="login-form">
-          <h1>Welcome Back!</h1>
+          <div className="head">
+          <h1>Welcome! </h1>
+          <p>Let's Order Food</p>
+          </div>
             <form>
             <div className="input-2">
             <input type="email" placeholder="Email" onChange={(event)=>{
@@ -36,10 +44,15 @@ export const CreateLogin=()=>{
                 <input type="password" placeholder="Password" onChange={(event)=>{
                   setLoginPassword(event.target.value);
                 }}/>
-                <button onClick={login}>Login</button>
+                <button type="button" onClick={login}>Login</button>
             </div>
-            <p>New User? <Link to="/sign" className="link-2">Register</Link></p>
+<div className="paragraph">
+<p>New to Takeaway? <Link to="/sign" className="link-2"> Register Here</Link></p>
+</div>
             </form>
+          </div>
+          <div className="background-right">
+             <img src={Back}/>
           </div>
         </div>
     )

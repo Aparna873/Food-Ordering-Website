@@ -1,10 +1,16 @@
 import React from "react";
+import { useLocation} from "react-router-dom";
 import "./../styles/contact.css";
 import  Phonee  from "../assets/icons/phone.png";
 import Mail from "../assets/icons/mail.png";
 import  Loc from "../assets/icons/location.png";
+import { Navbar } from "../component/nav/navbar";
 export const Contact=()=>{
+    var location= useLocation();
+console.log(location);
     return(
+        <div>
+            <Navbar/>
          <div className="contact">
             <div className="contact-1">
                 <div className="head">
@@ -32,6 +38,7 @@ export const Contact=()=>{
              <textarea placeholder="Your Message"/>
              <button>Send Message</button>
             </div>
+         </div>
          </div>
     );
 };

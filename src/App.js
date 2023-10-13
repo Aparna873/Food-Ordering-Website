@@ -6,7 +6,6 @@ import { Contact } from './pages/contact';
 import { Main } from './pages/home';
 import { Menu } from './pages/menu';
 import {Error} from './pages/error';
-import { Navbar } from './component/nav/navbar';
 import { Login } from './pages/login';
 import { SignIn } from './pages/signup';
 import { createContext , useEffect} from 'react';
@@ -26,7 +25,6 @@ function App() {
     <div className="App">
       <AppContext.Provider value={{userdata,setUserdata}}>
       <Router>
-      <Navbar/>
         <Routes>
           <Route path="/about" element={<About/>} />
           <Route path="/contact" element={<Contact/>} />

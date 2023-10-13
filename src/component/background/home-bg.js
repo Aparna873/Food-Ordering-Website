@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import  BG  from "../../assets/bg.png";
 import "../../styles/home.css"
-import L from "../../assets/leaf.png"
+import "../background/home-bg.css"
+import { useLocation } from "react-router-dom";
 export const Background=()=>{
+const [ currlocation ,setLocation]=useState('/');
+var location= useLocation();
+console.log(location);
     return (
-        <div className="back-ground">
-            <div className="heading">
-           <h2>
-                Welcome To Our <span>Indian</span> Restaurant.
-            </h2>
-           <p>Food is art and science. So, you take something out, 
-            you have to work with the recipe to make sure that you're 
-            providing delicious food with cleaner labels.
+        <div className={currlocation===location ? "select-image" : "background-home"}>
+            <div className="heading-home">
+           <h1>
+              <span> Good Food </span> Choices are Good Investments
+            </h1>
+           <p>Embark on a culinary journey without leaving the comfort of your home. 
+            Indulge your cravings with the exquisite flavors that meet unparalleled convenience. 
+            Our food ordering platform is designed to bring the best of the culinary world directly to your doorstep.
            </p>
+           <div className="BUTTONS">
+           <button>Explore Food</button>
+           <button>Order now</button>
            </div>
-           <div className="picture">
-            <img src={BG}/>
+           </div>
+           <div className="picture-home">
+            <img src={BG} width={560}/>
            </div>
         </div>
     )

@@ -1,11 +1,16 @@
 import React from "react";
+import { useLocation} from "react-router-dom";
 import "../styles/about.css"
 import Truck from "./../assets/icons/food_truck.png"
 import Food from "./../assets/icons/food.png"
 import Time from "./../assets/icons/clock.png"
+import { Navbar } from "../component/nav/navbar";
 export const About = () => {
+    var location= useLocation();
+console.log(location);
     return (
         <div className="About">
+            <Navbar/>
             <div className="heading">
                 <h1>We're Passoinate about
                     <br></br>

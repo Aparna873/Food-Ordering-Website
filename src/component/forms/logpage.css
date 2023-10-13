@@ -1,73 +1,103 @@
-*{
-    font-family: poppins,sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;1,200&family=Poppins:wght@300;500;600&family=Roboto+Slab:wght@600&family=Young+Serif&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Young serif;
 }
 .Register-2
 {
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    width: 100vw;
-    height: 50vh;
-    margin-top: 100px;
+    align-items: center;
+    height: 100vh;
 }
-.login-form 
+.login-form
+{
+display: flex;
+flex-direction: column;
+width: 800px;
+}
+.background-right
 {
     display: flex;
-    flex-direction: column;
-    background-color: rgb(250, 245, 245);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 400px;
-    border-radius: 8px;
-    align-items: center;
-    box-shadow: 0 3px 6px 0  rgb(164, 162, 162);
+    flex-direction: row;
+    height: 100%;
+    width: 70%;
+}
+.background-right img
+{
+width: 100%;
 }
 .input-2
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
-.input-2 input{
-    
+.input-2 input
+{
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    width: 290px;
+    padding-bottom: 10px;
     padding-top: 15px;
     padding-bottom: 15px;
-    width: 280px;
-    padding-bottom: 10px;
     padding-left: 10px;
-    padding-right: 5px;
-    border-color: azure;
-    border-radius: 8px;
+    padding-right: 10px;
+    border-radius: 4px;
     border: 1px solid rgb(198, 195, 195);
 }
-.input-2 button{
+.input-2 button
+{
     margin-top: 20px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    width: 290px;
+    padding-bottom: 10px;
     padding-top: 15px;
     padding-bottom: 15px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border:none;
-    background-color: #D07000;
-    border-radius: 8px;
-    font-weight: 700;
-    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 4px;
+    border: 1px solid rgb(198, 195, 195); 
+    background-color: #1A4D2E;
+    color: aliceblue;
+    cursor: pointer;
 }
-.login-form h1{
-margin-top: 40px;
-color: #D07000;
-font-weight: 700;
-}
-.login-form p
+.head 
 {
-color:rgb(78, 76, 76);
-font-size: 15px;
-margin-top: 30px;
+    margin: 10px;
 }
-.link-2
+.head h1  span
+{
+    color: #FF4C29;
+}
+.head h1{
+margin-top: 5px;
+color: #1A4D2E;
+font-weight: 900;
+}
+.head p
+{
+    margin-top: 5px;  
+    color: #FF4C29;
+    font-weight: 800;
+}
+.paragraph
+{
+    margin-top: 25px;
+}
+.paragraph p
+{
+    color: rgb(16, 13, 13);
+    font-weight: 400;
+}
+.paragraph .link-2
 {
     text-decoration: none;
-    font-size: 14px;
-    color: #D07000;
+    color: #FF4C29;
+    font-weight: 700;
 }

@@ -1,0 +1,62 @@
+.select-image
+{
+    background-image: url(../../assets/Desktop-bg.jpg);
+    background-position:inherit;
+    background-size: cover;
+}
+.background-home
+{
+ display: flex;
+ flex-direction: row; 
+ align-items: center;
+ margin-top: 50px;
+}
+.heading-home
+{
+display: flex;
+flex-direction: column;
+text-align: left;
+width: 600px;
+margin-left: 90px;
+}
+.heading-home h1
+{
+font-size: 55px;
+}
+.heading-home h1 span
+{
+    color: #FF4C29;
+}
+.heading-home p
+{
+    margin-top: 20px;
+}
+.picture-home
+{
+    display: flex;
+    margin-left: 250px;
+}
+
+.BUTTONS
+{
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+}
+.BUTTONS button
+{
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    width: 150px;
+    border-radius: 15px;
+    border: none;
+    background-color: #1A4D2E;
+    color: aliceblue;
+    box-shadow: 2px 2px 2px 2px #024d20;
+    cursor: pointer;
+    margin-right:30px;
+    font-size: 15px;
+}
