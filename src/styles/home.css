@@ -1,0 +1,6 @@
+.select-image
+{
+    background-image: url(../assets/Desktop-bg.jpg);
+    background-position:inherit;
+    background-size: cover;
+}

@@ -4,11 +4,8 @@ import "../../styles/home.css"
 import "../background/home-bg.css"
 import { useLocation } from "react-router-dom";
 export const Background=()=>{
-const [ currlocation ,setLocation]=useState('/');
-var location= useLocation();
-console.log(location);
     return (
-        <div className={currlocation===location ? "select-image" : "background-home"}>
+        <div className="background-home">
             <div className="heading-home">
            <h1>
               <span> Good Food </span> Choices are Good Investments
