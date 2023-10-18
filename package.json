@@ -45,10 +45,16 @@
   "react-hook-form": "^7.46.2",
   
     
+  "react-loader-spinner": "^5.4.5",
+  
+    
   "react-router-dom": "^6.15.0",
   
     
   "react-scripts": "5.0.1",
+  
+    
+  "react-spinners": "^0.13.8",
   
     
   "web-vitals": "^2.1.4",

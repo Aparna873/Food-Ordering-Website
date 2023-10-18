@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 import { About } from './pages/about';
 import { Contact } from './pages/contact';
@@ -8,8 +8,11 @@ import { Menu } from './pages/menu';
 import {Error} from './pages/error';
 import { Login } from './pages/login';
 import { SignIn } from './pages/signup';
-import { createContext , useEffect} from 'react';
+import { createContext} from 'react';
 import {auth} from "./firebase-config";
+import { useState,useEffect } from 'react';
+import LoaderComp from './react-loader/loader';
+
 
 export const AppContext=createContext();
 function App() {
@@ -21,9 +24,22 @@ function App() {
       setUserdata(user)
     })
   })
+
+  const [loading,setLoading] =useState(false);
+  useEffect(()=>{
+   setLoading(true);
+   setTimeout(()=>{
+    setLoading(false);
+   },800)
+  },[])
   return (
     <div className="App">
-      <AppContext.Provider value={{userdata,setUserdata}}>
+      {loading ?  
+       (
+        <LoaderComp/> 
+  ) 
+      :
+      (<AppContext.Provider value={{userdata,setUserdata}}>
       <Router>
         <Routes>
           <Route path="/about" element={<About/>} />
@@ -35,7 +51,8 @@ function App() {
           <Route path="*" element={<Error/>} />
         </Routes>
       </Router>
-      </AppContext.Provider >
+      </AppContext.Provider >)
+      }
     </div>
   );
 }
