@@ -6,8 +6,8 @@ import Mail from "../assets/icons/mail.png";
 import  Loc from "../assets/icons/location.png";
 import { Navbar } from "../component/nav/navbar";
 export const Contact=()=>{
-    var location= useLocation();
-console.log(location);
+//     var location= useLocation();
+// console.log(location);
     return(
         <div>
             <Navbar/>

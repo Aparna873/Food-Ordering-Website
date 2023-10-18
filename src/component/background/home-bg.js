@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import  BG  from "../../assets/bg.png";
 import "../../styles/home.css"
 import "../background/home-bg.css"
-import { useLocation } from "react-router-dom";
 export const Background=()=>{
     return (
         <div className="background-home">

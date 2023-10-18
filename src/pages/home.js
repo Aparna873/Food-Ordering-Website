@@ -6,11 +6,10 @@ import { useState } from "react";
 import ".././styles/home.css"
 import { useLocation } from "react-router-dom";
 export const Main=()=>{
-const [ currlocation ,setLocation]=useState('/');
+const [ currlocation ,setLocation] = useState('/');
 var location= useLocation();
-console.log(location);
     return(
-         <div className={currlocation===location ? "select-image" : "not-selected"}> 
+         <div className={currlocation === location.pathname ? "select-image" : " "}> 
             <Navbar/> 
             <Background/>
             <Company/>

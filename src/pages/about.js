@@ -6,8 +6,8 @@ import Food from "./../assets/icons/food.png"
 import Time from "./../assets/icons/clock.png"
 import { Navbar } from "../component/nav/navbar";
 export const About = () => {
-    var location= useLocation();
-console.log(location);
+//     var location= useLocation();
+// console.log(location);
     return (
         <div className="About">
             <Navbar/>
