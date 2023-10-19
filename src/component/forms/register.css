@@ -102,3 +102,13 @@ width: 70%;
     text-decoration: none;
     color: #FF4C29;
 }
+.loaderr
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.active
+{
+    background-color: #FF4C29;
+}

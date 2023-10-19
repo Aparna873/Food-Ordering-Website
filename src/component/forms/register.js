@@ -1,57 +1,66 @@
-import React, { useState } from "react";
+import React from "react";
 import './register.css'
 import { Link, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, getAuth, updateProfile } from "firebase/auth";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {auth }from "..//../firebase-config"
 import Img from "../../assets/login_bg.jpg"
+import { TailSpin } from "react-loader-spinner";
 
-export const CreateSignin = () => {
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [registerName, setRegisterName] = useState("");
+
+export function CreateSignin()
+{
   const navigate = useNavigate();
-  const auth = getAuth();
-
-  const registerr = async () => {
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      );
-
-      // Extract the user from userCredential
-      const user = userCredential.user;
-
-      // Update the user's display name
-      await updateProfile(user, { displayName: registerName });
-
-      navigate('/');
-      console.log(user);
-    } catch (error) {
-      console.log(error.message);
+  const [buttonClicked1,setbuttonClicked1]=useState(false);
+  const [isloading,setIsLoading]=useState(false);
+  const [submitButtonDisabled,setSubmitButtonDisabled]=useState(false);
+  const [errormsg, setErrorMsg] = useState("");
+  const [userData,setUserData]=useState(
+    {
+      name:"",
+      email:"",
+      pass:"",
+      confirmpass:""
     }
+  )
+  const registerr =() => {
+    if (!userData.name || !userData.email || !userData.pass || !userData.confirmpass) {
+      setErrorMsg("All fields mandatory")
+      return;
+  }
+   // Check if password and confirm password match
+   if (userData.pass !== userData.confirmpass) {
+    setErrorMsg("Passwords do not match");
+    return;
+  }
+  setErrorMsg("");
+  setSubmitButtonDisabled(true);
+      setIsLoading(true);
+      setbuttonClicked1(true);
+     createUserWithEmailAndPassword(
+        auth,
+        userData.email,
+        userData.pass
+      )
+      .then(async(res)=>{
+        setbuttonClicked1(true);
+        setSubmitButtonDisabled(false);
+         
+        // Extract the user from userCredential
+        const user = res.user;
+  
+        // Update the user's display name
+        await updateProfile(user, { displayName: userData.name });
+        navigate('/');
+      })
+     .catch ((err)=> {
+      setSubmitButtonDisabled(false);
+          setIsLoading(false);
+          setErrorMsg(err.message);
+    })
   };
-
-  const schema = yup.object().shape({
-    fullname: yup.string().required("You must add Your name"),
-    email: yup.string().email("Invalid email format").required("You must add Your mail"),
-    password: yup.string().min(8).required("You must add Password"),
-    confirmPassword: yup.string().oneOf([yup.ref("password"), null], "Passwords must match"),
-  });
-
-  const { register, handleSubmit } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const onSubmit = () => {
-    registerr();
-  };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form>
       <div className="Register">
         <div className="create-form">
          <div className="head-1">
@@ -61,34 +70,59 @@ export const CreateSignin = () => {
           <div className="input-1">
             <input
               type="text"
-              placeholder="Full Name"
-              {...register("fullname")}
+              placeholder="Name"
               onChange={(event) => {
-                setRegisterName(event.target.value);
+                setUserData((prev)=>({
+                  ...prev,name:event.target.value
+                }));
               }}
-            />
+            ></input>
             <input
               type="email"
               placeholder="Email"
-              {...register("email")}
               onChange={(event) => {
-                setRegisterEmail(event.target.value);
+                setUserData((prev)=>({
+                  ...prev,email:event.target.value
+                }));
               }}
-            />
+            ></input>
             <input
               type="password"
               placeholder="Password"
-              {...register("password")}
               onChange={(event) => {
-                setRegisterPassword(event.target.value);
+                setUserData((prev)=>({
+                  ...prev,pass:event.target.value
+                }));
               }}
-            />
+            ></input>
             <input
               type="password"
               placeholder="Confirm Password"
-              {...register("confirmPassword")}
-            />
-            <button type="button" onClick={registerr}>Create Account</button>
+              onChange={(event) => {
+                setUserData((prev)=>({
+                  ...prev,confirmpass:event.target.value
+                }));
+              }}
+            ></input>
+            <p className="error" style={{color:"red"}}>{errormsg}</p>
+            <button type="button" className={(buttonClicked1 ? "active": "submit")} onClick={registerr} disabled={submitButtonDisabled}>
+              {
+isloading ? (
+  <div className="loaderr">
+         <TailSpin
+         color="#9EB384"
+         ariaLabel="loading"
+         height={10}
+         width={10}
+         radius={5}
+         />
+  </div>
+
+):
+              (
+                "Create Account"
+                )}
+                </button>
           </div>
           <div className="paragraph-1">
           <p>Existing Users? 
