@@ -11,49 +11,62 @@ import { SignIn } from './pages/signup';
 import { createContext} from 'react';
 import {auth} from "./firebase-config";
 import { useState,useEffect } from 'react';
-import LoaderComp from './react-loader/loader';
-
+import MoonLoader from 'react-spinners/ClipLoader';
+import "./react-loader/loader.css";
+import { onAuthStateChanged } from 'firebase/auth';
+import { Description } from './component/menu/description';
 
 export const AppContext=createContext();
-function App() {
-
+function App() 
+{
   const [userdata,setUserdata]=useState([]);
-
+  const [loading,setLoading]=useState(true); 
   useEffect(()=>{
-    auth.onAuthStateChanged((user)=>{
-      setUserdata(user)
-    })
+    try
+    {
+      onAuthStateChanged(auth, (currentUser) => {
+        setUserdata(currentUser);
+        console.log(currentUser);
+        setLoading(false);
+    });
+    }
+    catch(err)
+    {
+       console.log(err);
+    }
   })
-
-  const [loading,setLoading] =useState(false);
-  useEffect(()=>{
-   setLoading(true);
-   setTimeout(()=>{
-    setLoading(false);
-   },800)
-  },[])
-  return (
-    <div className="App">
-      {loading ?  
-       (
-        <LoaderComp/> 
-  ) 
-      :
-      (<AppContext.Provider value={{userdata,setUserdata}}>
-      <Router>
-        <Routes>
-          <Route path="/about" element={<About/>} />
-          <Route path="/contact" element={<Contact/>} />
-          <Route path="/" element={<Main/>} />
-          <Route path="/menu" element={<Menu/>} />
-          <Route path="/sign" element={<SignIn/>} />
-          <Route path="/log" element={<Login/>} />
-          <Route path="*" element={<Error/>} />
-        </Routes>
-      </Router>
-      </AppContext.Provider >)
-      }
+ if(loading ) 
+  {
+    return (
+      <div className="loading-home">
+      <MoonLoader
+     size={45}
+     loading={true}
+    color={'#FF4C29'}
+     />
     </div>
-  );
-}
+   )}
+  else
+  {
+    return (
+      <div className="App"> 
+        <AppContext.Provider value={{userdata,setUserdata}}>
+        <Router>
+          <Routes>
+            <Route path="/about" element={<About/>} />
+            <Route path="/contact" element={<Contact/>} />
+            <Route path="/" element={<Main/>} />
+            <Route path="/menu" element={<Menu/>} />
+            <Route path="/sign" element={<SignIn/>} />
+            <Route path="/log" element={<Login/>} />
+            <Route path="*" element={<Error/>} />
+            <Route path='/des' element={<Description/>}/>
+          </Routes>
+        </Router>
+        </AppContext.Provider >
+      </div>
+    );
+  }
+  }
+
 export default App;

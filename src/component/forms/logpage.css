@@ -101,3 +101,9 @@ font-weight: 900;
     color: #FF4C29;
     font-weight: 700;
 }
+.submit-loader
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

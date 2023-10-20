@@ -11,7 +11,6 @@ import { TailSpin } from "react-loader-spinner";
 export function CreateSignin()
 {
   const navigate = useNavigate();
-  const [buttonClicked1,setbuttonClicked1]=useState(false);
   const [isloading,setIsLoading]=useState(false);
   const [submitButtonDisabled,setSubmitButtonDisabled]=useState(false);
   const [errormsg, setErrorMsg] = useState("");
@@ -36,14 +35,13 @@ export function CreateSignin()
   setErrorMsg("");
   setSubmitButtonDisabled(true);
       setIsLoading(true);
-      setbuttonClicked1(true);
      createUserWithEmailAndPassword(
         auth,
         userData.email,
         userData.pass
       )
+
       .then(async(res)=>{
-        setbuttonClicked1(true);
         setSubmitButtonDisabled(false);
          
         // Extract the user from userCredential
@@ -104,8 +102,8 @@ export function CreateSignin()
                 }));
               }}
             ></input>
-            <p className="error" style={{color:"red"}}>{errormsg}</p>
-            <button type="button" className={(buttonClicked1 ? "active": "submit")} onClick={registerr} disabled={submitButtonDisabled}>
+            <p className="error">{errormsg}</p>
+            <button type="button" onClick={registerr} disabled={submitButtonDisabled}>
               {
 isloading ? (
   <div className="loaderr">

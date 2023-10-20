@@ -108,7 +108,10 @@ width: 70%;
     justify-content: center;
     align-items: center;
 }
-.active
+.error
 {
-    background-color: #FF4C29;
+    font-size: 15px;
+    font-weight: 700;
+    font-style: italic;
+    color: rgb(221, 11, 11);
 }

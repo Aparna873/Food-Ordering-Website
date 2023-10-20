@@ -3,32 +3,49 @@ import './../forms/logpage.css';
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase-config";
 import Back from "../../assets/register-bg.jpg"
-import { signInWithEmailAndPassword , updateProfile , getAuth} from "firebase/auth";
-export const CreateLogin=()=>{
-  const [loginEmail,setLoginEmail]=useState("");
-  const [loginPassword,setLoginPassword]=useState("");
-  const [loginName,setLoginName]=useState("");
-  const navigate = useNavigate();
-  const authInstance = getAuth();
-  const login= async()=>
+import { signInWithEmailAndPassword , updateProfile} from "firebase/auth";
+import { TailSpin } from "react-loader-spinner";
+export function CreateLogin()
+{
+  const [userData,setuserData]=useState(
     {
-      try {
-        const userCredential = await signInWithEmailAndPassword(
-          authInstance,
-          loginEmail,
-          loginPassword
-        );
-        const user = userCredential.user;
-        if (loginName) {
-          await updateProfile(user, { displayName: loginName });
-        }
+      email:"",
+      password:""
+    }
+  )
+  const navigate = useNavigate();
+  const [isloading,setIsLoading]=useState(false);
+  const [submitButtonDisabled,setSubmitButtonDisabled]=useState(false);
+  const [errormsg, setErrorMsg] = useState("");
+  const login=()=>
+    {
+      if (!userData.email || !userData.password) {
+        setErrorMsg("All fields mandatory")
+        return;
+    }
+      setErrorMsg("");
+  setSubmitButtonDisabled(true);
+      setIsLoading(true);
+     signInWithEmailAndPassword(
+        auth,
+        userData.email,
+        userData.password
+      )
+
+      .then(async(res)=>{
+        setSubmitButtonDisabled(false);
+        const user = res.user;
+         setIsLoading(true);
+        await updateProfile(user, { displayName: userData.name });
         navigate('/');
-        console.log(user);
-      } 
-      catch (error) {
-        console.log(error.message);
-      }   
-    };
+      })
+     .catch ((err)=> {
+      setSubmitButtonDisabled(false);
+          setIsLoading(false);
+          setErrorMsg(err.message);
+    })
+  };
+
     return (
         <div className="Register-2">
           <div className="login-form">
@@ -39,12 +56,36 @@ export const CreateLogin=()=>{
             <form>
             <div className="input-2">
             <input type="email" placeholder="Email" onChange={(event)=>{
-              setLoginEmail(event.target.value);
+              setuserData({
+                ...userData, email:event.target.value
+              });
             }}/>
                 <input type="password" placeholder="Password" onChange={(event)=>{
-                  setLoginPassword(event.target.value);
+                  setuserData({
+                    ...userData, password:event.target.value,
+                  });
                 }}/>
-                <button type="button" onClick={login}>Login</button>
+                  <p style={{ color: "red" }} className='error'>{errormsg}</p>
+                <button type="button" onClick={login} disabled={submitButtonDisabled}>
+                  {
+                    isloading 
+                    ?
+                    (
+                      <div className="submit-loader">
+                        <TailSpin
+         color="#9EB384"
+         ariaLabel="loading"
+         height={10}
+         width={10}
+         radius={5}
+         />
+                      </div>
+                    ):
+                    (
+                     " Login"
+                      )
+                  }
+            </button>
             </div>
 <div className="paragraph">
 <p>New to Takeaway? <Link to="/sign" className="link-2"> Register Here</Link></p>
@@ -56,4 +97,4 @@ export const CreateLogin=()=>{
           </div>
         </div>
     )
-}
+                };
