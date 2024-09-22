@@ -38,6 +38,11 @@ const Cart = () => {
   const handleOrderNow = () => {
     // Logic for placing the order can be added here
     alert('Order placed successfully!');
+    
+    // Clear the cart
+    setCartItems([]);
+    localStorage.setItem("cart", JSON.stringify([])); // Clear local storage
+
     setIsModalOpen(false);
   };
 
