@@ -1,4 +1,50 @@
-.bg-2
-{
-    margin-top: 300px;
+/* home-bg2.css */
+.bg-2 {
+    margin-top: 100px; /* Space above the section */
+    text-align: center; /* Center text */
+}
+
+.bg-2 h2 {
+    font-size: 2rem; /* Font size for the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    font-weight: 600; /* Font weight */
+}
+
+.flex {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the images */
+    flex-wrap: nowrap; /* Prevent wrapping, but allow overflow */
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+}
+
+.flex img {
+    max-width: 100px; /* Set a max width for the brand logos */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 10px; /* Space between images */
+    transition: transform 0.2s; /* Smooth scaling on hover */
+}
+
+.flex img:hover {
+    transform: scale(1.1); /* Slightly scale image on hover */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .bg-2 h2 {
+        font-size: 1.5rem; /* Smaller heading size for tablets */
+    }
+
+    .flex img {
+        max-width: 80px; /* Smaller brand logos for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .bg-2 h2 {
+        font-size: 1.2rem; /* Further reduce heading size for mobile */
+    }
+
+    .flex img {
+        max-width: 60px; /* Smaller brand logos for mobile */
+    }
 }

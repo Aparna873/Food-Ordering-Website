@@ -1,56 +1,117 @@
-.background-home
-{
- display: flex;
- flex-direction: row; 
- align-items: center;
- margin-top: 50px;
-}
-.heading-home
-{
-display: flex;
-flex-direction: column;
-text-align: left;
-width: 600px;
-margin-left: 90px;
-}
-.heading-home h1
-{
-font-size: 55px;
-}
-.heading-home h1 span
-{
-    color: #FF4C29;
-}
-.heading-home p
-{
-    margin-top: 20px;
-}
-.picture-home
-{
+/* home-bg.css */
+.background-home {
     display: flex;
-    margin-left: 250px;
+    flex-direction: row; /* Ensure items are in a row */
+    align-items: center; /* Center vertically */
+    justify-content: space-between; /* Space between items */
+    margin-top: 50px;
+    padding: 0 20px; /* Add padding for smaller screens */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
-.BUTTONS
-{
+.heading-home {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%; /* Full width on small screens */
+    max-width: 600px; /* Limit width on larger screens */
+    margin: 0 auto; /* Center on small screens */
+}
+
+.heading-home h1 {
+    font-size: 2.5rem; /* Responsive font size */
+}
+
+.heading-home h1 span {
+    color: #FF4C29; /* Highlighted text color */
+}
+
+.heading-home p {
+    margin-top: 20px;
+    font-size: 1.2rem; /* Adjust font size for readability */
+}
+
+.BUTTONS {
     display: flex;
     flex-direction: row;
     text-align: left;
+    flex-wrap: wrap; /* Allow wrapping for buttons */
 }
-.BUTTONS button
-{
+
+.BUTTONS button {
     margin-top: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 2px;
-    padding-right: 2px;
-    width: 150px;
+    padding: 10px 20px; /* Add padding */
+    width: 150px; /* Fixed width for buttons */
     border-radius: 15px;
     border: none;
-    background-color: #1A4D2E;
-    color: aliceblue;
-    box-shadow: 2px 2px 2px 2px #024d20;
-    cursor: pointer;
-    margin-right:30px;
-    font-size: 15px;
+    background-color: #1A4D2E; /* Button background color */
+    color: aliceblue; /* Button text color */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for buttons */
+    cursor: pointer; /* Pointer cursor for buttons */
+    margin-right: 20px; /* Space between buttons */
+    font-size: 15px; /* Button font size */
+}
+
+/* Image container styles */
+.picture-home {
+    display: flex;
+    justify-content: center; /* Center the image */
+    margin-left: 20px; /* Space between text and image */
+}
+
+.picture-home img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .background-home {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: center; /* Center align items */
+    }
+
+    .heading-home {
+        text-align: center; /* Center align text */
+    }
+
+    .heading-home h1 {
+        font-size: 2rem; /* Smaller font size for tablets */
+    }
+
+    .heading-home p {
+        font-size: 1rem; /* Smaller font size for tablets */
+    }
+
+    .picture-home {
+        margin-left: 0; /* Remove left margin on smaller screens */
+        margin-top: 20px; /* Add space above the image */
+    }
+
+    .picture-home img {
+        max-width: 70%; /* Reduce image size for tablets */
+    }
+
+    .BUTTONS {
+        justify-content: center; /* Center buttons */
+    }
+}
+
+@media (max-width: 480px) {
+    .heading-home h1 {
+        font-size: 1.5rem; /* Further reduce font size for mobile */
+    }
+
+    .heading-home p {
+        font-size: 0.9rem; /* Further reduce font size */
+    }
+
+    .BUTTONS button {
+        width: 120px; /* Smaller button width for mobile */
+        font-size: 14px; /* Adjust font size */
+    }
+
+    .picture-home img {
+        max-width: 50%; /* Further reduce image size for mobile */
+    }
 }

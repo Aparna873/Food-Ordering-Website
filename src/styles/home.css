@@ -1,6 +1,63 @@
-.select-image
-{
-    background-image: url(../assets/Desktop-bg.jpg);
-    background-position:inherit;
-    background-size: cover;
+.select-image {
+    background-image: url(../assets/Desktop-bg.jpg); /* Background image */
+    background-position: center; /* Center the image */
+    background-size: cover; /* Cover the entire container */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
 }
+
+.Main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items */
+    padding: 0; /* Reset padding */
+}
+
+.Navbar {
+    width: 100%; /* Full width for the navbar */
+    position: relative; /* Allow positioning */
+    z-index: 10; /* Ensure navbar is on top */
+}
+
+.Background {
+    width: 100%; /* Full width for background */
+    flex-grow: 1; /* Allow background to take available space */
+}
+
+.Company {
+    width: 100%; /* Full width for the company section */
+    padding: 20px; /* Padding for the company section */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) { /* For tablets */
+    .select-image {
+        height: auto; /* Auto height for smaller screens */
+    }
+
+    .Navbar {
+        padding: 10px; /* Adjust navbar padding */
+    }
+
+    .Background,
+    .Company {
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) { /* For mobile phones */
+    .select-image {
+        height: auto; /* Auto height for smaller screens */
+    }
+
+    .Navbar {
+        padding: 5px; /* Further reduce navbar padding */
+    }
+
+    .Background,
+    .Company {
+        padding: 5px; /* Further reduce padding */
+    }
+}
+

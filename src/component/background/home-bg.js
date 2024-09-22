@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import  BG  from "../../assets/bg.png";
 import "../../styles/home.css"
 import "../background/home-bg.css"
+import { Link } from "react-router-dom";
 export const Background=()=>{
     return (
         <div className="background-home">
@@ -14,8 +15,12 @@ export const Background=()=>{
             Our food ordering platform is designed to bring the best of the culinary world directly to your doorstep.
            </p>
            <div className="BUTTONS">
-           <button>Explore Food</button>
-           <button>Order now</button>
+           <Link to="/menu">
+                        <button>Explore Food</button>
+                    </Link>
+                    <Link to="/cart">
+                        <button>Order now</button>
+                    </Link>
            </div>
            </div>
            <div className="picture-home">

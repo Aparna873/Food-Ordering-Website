@@ -1,73 +1,46 @@
+.icon-text .para {
+    font-size: 1rem; /* Base font size */
+}
 
+.heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-.icon-text .para{
-    font-size: 17px;
-}
-.heading
-{
+.heading h1 {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    font-size: 2.5rem; /* Default size for larger screens */
 }
-.heading h1
-{
- display: flex;
- flex-direction: column;
- justify-content: center;
- margin-top: 30px;
- font-size: 50px;
+
+.heading p {
+    margin-top: 20px;
+    width: 100%; /* Full width on smaller screens */
+    max-width: 650px; /* Maximum width for larger screens */
+    text-align: center;
 }
-.heading p
-{
-margin-top: 20px;
-width: 650px;
-text-align: center;
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) { /* For tablets */
+    .heading h1 {
+        font-size: 2rem; /* Smaller font size */
+    }
+    .heading p {
+        font-size: 0.875rem; /* Adjust paragraph font size */
+        padding: 0 20px; /* Add some padding on the sides */
+    }
 }
-@media(max-width:780px)
-{
-    .element-container
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-.heading
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.heading h1
-{
- font-size: 2.1rem;
- margin-bottom: 10px;
-}
-.heading p
-{
- font-size: 1.1rem;
- max-width: fit-content;
- margin-bottom: 10px;
- margin-left: 30px;
- margin-right: 30px;
-}
-.icon-box-1
-{
-   display: flex;
-   flex-direction: column;
-   margin-bottom: 40px;
-}
-.icon-box-2
-{
-   display: flex;
-   flex-direction: column;
-   margin-bottom: 40px;
-}
-.icon-box-3
-{
-   display: flex;
-   flex-direction: column;
-   margin-bottom: 40px;
-}
+
+@media (max-width: 480px) { /* For mobile phones */
+    .heading h1 {
+        font-size: 1.5rem; /* Even smaller font size */
+        margin-top: 20px; /* Reduce margin */
+    }
+    .heading p {
+        font-size: 0.8rem; /* Smaller paragraph font size */
+        padding: 0 10px; /* Less padding on mobile */
+    }
 }
