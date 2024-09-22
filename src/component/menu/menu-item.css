@@ -28,17 +28,18 @@ height: 150px;
 }
 .menuItem p
 {
-    margin-top: 2px;
+    margin-top: 2px; 
     margin-bottom: 2px;
     text-align: left;
     margin-left: 10px;
 }
- .type
+.veg
 {
-    margin-bottom: 10px;
-    font-style: normal;
     color: green;
-    font-weight: 600;
+}
+.non-veg
+{
+    color: red;
 }
 Link .menuItem h1
 {

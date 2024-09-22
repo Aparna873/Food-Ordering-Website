@@ -1,4 +1,5 @@
 import './App.css';
+import './index.css'
 import React from 'react';
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 import { About } from './pages/about';
@@ -14,8 +15,7 @@ import { useState,useEffect } from 'react';
 import MoonLoader from 'react-spinners/ClipLoader';
 import "./react-loader/loader.css";
 import { onAuthStateChanged } from 'firebase/auth';
-import { Description } from './component/menu/description';
-
+import Cart from './component/menu/Cart';
 export const AppContext=createContext();
 function App() 
 {
@@ -53,6 +53,7 @@ function App()
         <AppContext.Provider value={{userdata,setUserdata}}>
         <Router>
           <Routes>
+            <Route path="/cart" element={<Cart/>}/>
             <Route path="/about" element={<About/>} />
             <Route path="/contact" element={<Contact/>} />
             <Route path="/" element={<Main/>} />
@@ -60,7 +61,6 @@ function App()
             <Route path="/sign" element={<SignIn/>} />
             <Route path="/log" element={<Login/>} />
             <Route path="*" element={<Error/>} />
-            <Route path='/des' element={<Description/>}/>
           </Routes>
         </Router>
         </AppContext.Provider >
@@ -68,5 +68,4 @@ function App()
     );
   }
   }
-
 export default App;

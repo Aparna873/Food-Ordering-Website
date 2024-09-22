@@ -7,7 +7,7 @@ import "../background/home-bg2.css"
 export const Company=()=>{
 return <div className="bg-2">
     <h2>TRUSTED BY 70+ COMPANIES</h2>
-   <div className="image">
+   <div className="flex flex-row">
    < img src={B1}/>
     < img src={B2}/>
     < img src={B3}/>
