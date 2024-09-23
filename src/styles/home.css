@@ -1,8 +1,7 @@
 .select-image {
-    background-image: url(../assets/Desktop-bg.jpg); /* Background image */
+    background-color: #ffe4de;
     background-position: center; /* Center the image */
     background-size: cover; /* Cover the entire container */
-    height: 100vh; /* Full viewport height */
     display: flex;
     flex-direction: column; /* Stack children vertically */
 }

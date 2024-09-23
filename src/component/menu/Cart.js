@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Navbar } from "../nav/navbar";
 
-const Cart = () => {
+ const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -47,10 +48,10 @@ const Cart = () => {
   };
 
   return (
+  <>
+    <Navbar/>
     <div className="max-w-3xl mx-auto p-6 bg-gray-100 rounded-lg shadow-lg">
-      <h1 className="text-3xl font-extrabold mb-6 text-center text-gray-800">
-        Your Cart
-      </h1>
+
       {cartItems.length === 0 ? (
         <p className="text-gray-500 text-center text-lg">Your cart is empty</p>
       ) : (
@@ -135,7 +136,8 @@ const Cart = () => {
         </div>
       )}
     </div>
-  );
-};
+    </>
+  )}
+ 
 
 export default Cart;
