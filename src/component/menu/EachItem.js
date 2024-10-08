@@ -1,50 +1,48 @@
-import React, { useState } from "react";
+import { useState } from 'react';
+import { useCart } from '../context/CartContextProvider';
 import './menu-item.css';
 
-function EachItem({ image, name, price, type, onClose, onAddToCart }) {
-  const [quantity, setQuantity] = useState(0); // Start with 0 (not added yet)
+function EachItem({ image, name, price, type, onClose }) {
+  const [quantity, setQuantity] = useState(0);
+  const [isAdding, setIsAdding] = useState(false);
+  const { addToCart } = useCart();
 
-  const handleAddToCart = () => {
-    if (quantity === 0) {
-      setQuantity(1);
-      onAddToCart({ image, name, type, price, quantity: 1 });
-    } else {
-      increaseQuantity(); // Increase quantity if already added
-    }
+  // When Add to Cart is clicked
+  const handleAddToCartClick = () => {
+    setQuantity(1);
+    setIsAdding(true);
   };
 
-  const handleAdd = () => {
-    if (quantity > 0) {
-      onClose(); // Close the modal only when the "Add" button is clicked
-    }
+  // Function to increase the quantity of item
+  const handleIncreaseQuantity = () => {
+    setQuantity(quantity + 1);
   };
 
-  const increaseQuantity = () => {
-    const newQuantity = quantity + 1;
-    setQuantity(newQuantity);
-    onAddToCart({ image, name, type, price, quantity: newQuantity });
-  };
-
-  const decreaseQuantity = () => {
+  // Function to decrease the quantity of item
+  const handleDecreaseQuantity = () => {
     if (quantity > 1) {
-      const newQuantity = quantity - 1;
-      setQuantity(newQuantity);
-      onAddToCart({ image, name, type, price, quantity: newQuantity });
-    } else if (quantity === 1) {
-      setQuantity(0); // Reset to 0 when decreased to 1
+      setQuantity(quantity - 1);
     }
+  };
+
+  // Function to add the item with the selected quantity to the cart
+  const handleAddToCart = async () => {
+    const item = { image, name, price, type };
+    await addToCart(item, quantity); // Use the Firestore integration here
+    setIsAdding(false);
+    setQuantity(0);
+    onClose();
   };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
-      <div className="absolute inset-0 bg-gray-800 opacity-70" onClick={onClose}></div>
+      <div className="absolute inset-0 bg-gray-800 opacity-70"></div>
 
       <div className="relative w-full max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden">
         <div
           className="w-full h-60 bg-cover bg-center"
           style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover' }}
         ></div>
-
         <div className="bg-white p-4 flex flex-col justify-between">
           <button
             onClick={onClose}
@@ -52,64 +50,59 @@ function EachItem({ image, name, price, type, onClose, onAddToCart }) {
           >
             ✖
           </button>
-
           <div className="text-center">
             <h2 className="text-xl font-semibold mt-2 flex justify-center items-center">
               {name}
-              <span className={`ml-2 inline-block px-2 py-1 rounded-full text-sm font-bold uppercase ${type === "Veg" ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"}`}>
+              <span
+                className={`ml-2 inline-block px-2 py-1 rounded-full text-sm font-bold uppercase ${
+                  type === 'Veg'
+                    ? 'bg-green-100 text-green-600'
+                    : 'bg-red-100 text-red-600'
+                }`}
+              >
                 {type}
               </span>
             </h2>
-            {/* Rating Stars */}
-            <div className="flex items-center justify-center mt-1">
-              {/* SVG stars here... */}
-            </div>
             <p className="text-lg font-bold mb-2">Rs. {price}</p>
           </div>
-
-          <div className="mt-2 flex justify-center items-center space-x-2">
-            {quantity === 0 ? (
-              <button
-                onClick={handleAddToCart}
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg font-semibold shadow-md hover:bg-blue-600 active:scale-95 transition duration-200"
-              >
-                Add to Cart
-              </button>
-            ) : (
-              <div className="flex items-center space-x-2">
+          {isAdding ? (
+            <>
+              <div className="flex items-center justify-center my-4">
                 <button
-                  onClick={decreaseQuantity}
-                  className="px-2 py-1 bg-gray-300 text-gray-700 rounded-lg shadow-md hover:bg-gray-400 active:scale-95 transition duration-200"
+                  onClick={handleDecreaseQuantity}
+                  className="bg-gray-200 text-gray-600 px-4 py-2 rounded-l transition duration-300 hover:bg-gray-300"
                 >
                   -
                 </button>
-                <span className="text-lg font-semibold">{quantity}</span>
+                <span className="px-6 py-2 border-t border-b">{quantity}</span>
                 <button
-                  onClick={increaseQuantity}
-                  className="px-2 py-1 bg-gray-300 text-gray-700 rounded-lg shadow-md hover:bg-gray-400 active:scale-95 transition duration-200"
+                  onClick={handleIncreaseQuantity}
+                  className="bg-gray-200 text-gray-600 px-4 py-2 rounded-r transition duration-300 hover:bg-gray-300"
                 >
                   +
                 </button>
               </div>
-            )}
-          </div>
-
-          <div className="mt-2 flex justify-between space-x-2">
-            <button
-              onClick={onClose}
-              className="flex-1 px-4 py-2  bg-gray-300 text-gray-800 rounded-lg font-semibold shadow-md hover:bg-gray-400 active:scale-95 transition duration-200"
-            >
-              Close
-            </button>
-            {quantity > 0 && (
               <button
-                onClick={handleAdd}
-                className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg font-semibold shadow-md hover:bg-blue-600 active:scale-95 transition duration-200"
+                onClick={handleAddToCart}
+                className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
               >
                 Add
               </button>
-            )}
-          </div>
+            </>
+          ) : (
+            <button
+              onClick={handleAddToCartClick}
+              className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
+            >
+              Add To Cart
+            </button>
+          )}
+          <button
+            onClick={onClose}
+            className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out mt-2"
+          >
+            Close
+          </button>
         </div>
       </div>
     </div>

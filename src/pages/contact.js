@@ -10,7 +10,7 @@ export const Contact=()=>{
 // console.log(location);
     return(
         <div>
-            <Navbar/>
+           
          <div className="contact">
             <div className="contact-1">
                 <div className="head">

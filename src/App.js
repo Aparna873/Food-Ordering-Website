@@ -1,73 +1,57 @@
 import './App.css';
-import './index.css'
-import React from 'react';
-import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
+import './index.css';
+import React, {useState, useEffect, createContext } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { About } from './pages/about';
 import { Contact } from './pages/contact';
 import { Main } from './pages/home';
 import { Menu } from './pages/menu';
-import {Error} from './pages/error';
-import { Login } from './pages/login';
-import { SignIn } from './pages/signup';
-import { createContext} from 'react';
-import {auth} from "./firebase-config";
-import { useState,useEffect } from 'react';
-import MoonLoader from 'react-spinners/ClipLoader';
-import "./react-loader/loader.css";
+import { Error } from './pages/error';
 import { onAuthStateChanged } from 'firebase/auth';
-import Cart from './component/menu/Cart';
-export const AppContext=createContext();
-function App() 
-{
-  const [userdata,setUserdata]=useState([]);
-  const [loading,setLoading]=useState(true); 
-  useEffect(()=>{
-    try
-    {
-      onAuthStateChanged(auth, (currentUser) => {
-        setUserdata(currentUser);
-        console.log(currentUser);
-        setLoading(false);
+import { Navbar } from './component/nav/navbar';
+import { auth } from "./firebase-config";
+import { CreateSignin } from './component/forms/register';
+import { CreateLogin } from './component/forms/logpage';
+import  Cart  from './component/cart';
+import {CartContextProvider} from './component/context/CartContextProvider';
+
+
+function App() {
+  const [userdata, setUserdata] = useState([]);
+  const AppContext = createContext();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUserdata(currentUser);
+      console.log(currentUser);
     });
-    }
-    catch(err)
-    {
-       console.log(err);
-    }
-  })
- if(loading ) 
-  {
+
+    return () => unsubscribe(); // Cleanup subscription
+  }, []);
+
     return (
-      <div className="loading-home">
-      <MoonLoader
-     size={45}
-     loading={true}
-    color={'#FF4C29'}
-     />
-    </div>
-   )}
-  else
-  {
-    return (
-      <div className="App"> 
-   
-        <AppContext.Provider value={{userdata,setUserdata}}>
-        <Router>
-          <Routes>
-            <Route path="/cart" element={<Cart/>}/>
-            <Route path="/about" element={<About/>} />
-            <Route path="/contact" element={<Contact/>} />
-            <Route path="/" element={<Main/>} />
-            <Route path="/menu" element={<Menu/>} />
-            <Route path="/sign" element={<SignIn/>} />
-            <Route path="/log" element={<Login/>} />
-            <Route path="*" element={<Error/>} />
-          </Routes>
-        </Router>
-        </AppContext.Provider >
-    
+      <div className="App">
+      
+          <AppContext.Provider value={{ userdata, setUserdata }}>
+          <CartContextProvider>
+            <Router>
+              <Navbar /> 
+              <Routes>
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/" element={<Main />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/cart" element={<Cart/>}/>
+                <Route path="/sign" element={<CreateSignin/>} />
+                <Route path="/log" element={<CreateLogin/>} />
+                <Route path="*" element={<Error />} />
+              </Routes>
+            </Router>
+            </CartContextProvider>
+          </AppContext.Provider>
       </div>
     );
   }
-  }
+
+
 export default App;

@@ -6,7 +6,6 @@ import { Navbar } from "../component/nav/navbar";
 export const Menu=()=>{
     return(
          <div>
-            <Navbar/>
             <FoodMenu/>
          </div>
     );

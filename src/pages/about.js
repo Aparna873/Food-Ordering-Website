@@ -7,7 +7,7 @@ import { Navbar } from "../component/nav/navbar";
 export const About = () => {
     return (
         <div className="About">
-            <Navbar/>
+          
             <div className="heading">
                 <h1>We're Passoinate about
                     <br></br>
