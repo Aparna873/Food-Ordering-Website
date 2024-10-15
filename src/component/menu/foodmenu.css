@@ -80,7 +80,7 @@ grid-gap: 50px;
     /* Scrollable buttons on smaller screens */
     .buttons {
         width: 90%;
-        overflow-x: auto;
+        overflow-x:scroll;
         white-space: nowrap;
     }
 
@@ -95,7 +95,7 @@ grid-gap: 50px;
 
     /* Change grid layout for smaller screens */
     .menu-list {
-        grid-template-columns: repeat(2, 1fr); /* Two items per row */
+        grid-template-columns: repeat(3, 1fr); /* Three items per row */
         grid-gap: 20px;
     }
 }
@@ -106,7 +106,7 @@ grid-gap: 50px;
     }
 
     .menu-list {
-        grid-template-columns: 1fr; /* Single column on very small screens */
+        grid-template-columns: repeat(2, 1fr); /*three column on very small screens */
         grid-gap: 15px;
     }
 }
