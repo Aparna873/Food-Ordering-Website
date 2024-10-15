@@ -1,6 +1,6 @@
 import React from "react";
-import Logo from '../images/logo.png'
-import "./footer.css"
+import Logo from "../../images/logo.png"
+import "../../styles/footer.css"
 export const Footer = () => {
   return (
     <div>
@@ -69,8 +69,6 @@ export const Footer = () => {
           </div>
         </div>
       </footer>
-
-
     </div>
   )
 }

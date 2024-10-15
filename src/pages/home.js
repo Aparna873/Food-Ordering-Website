@@ -4,7 +4,7 @@ import { Company } from "../component/background/home-bg2";
 import { useState } from "react";
 import ".././styles/home.css"
 import { useLocation } from "react-router-dom";
-import { Footer } from "../component/footer";
+import {Footer} from "../component/nav/footer"
 export const Main=()=>{
 const [ currlocation ,setLocation] = useState('/');
 var location= useLocation();

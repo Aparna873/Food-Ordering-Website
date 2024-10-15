@@ -91,7 +91,7 @@ export function CreateLogin() {
         </form>
       </div>
       <div className="background-right">
-        <img src={Back} />
+        <img src={Back} width={560}/>
       </div>
     </div>
   )

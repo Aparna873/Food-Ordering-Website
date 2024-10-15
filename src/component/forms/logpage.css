@@ -10,24 +10,17 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 .login-form
 {
 display: flex;
 flex-direction: column;
-width: 800px;
+width: 1000px;
 }
 .background-right
 {
     display: flex;
     flex-direction: row;
-    height: 100%;
-    width: 70%;
-}
-.background-right img
-{
-width: 100%;
 }
 .input-2
 {
@@ -106,4 +99,27 @@ font-weight: 900;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+/* Responsive design */
+@media (max-width: 768px) {
+    .Register-2 {
+        flex-direction: column;
+    }
+    .login-form {
+        width: 100%;
+        padding: 40px;
+    }
+    .background-right {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .input-2 input,
+    .input-2 button {
+        width: 80%;
+    }
+    .head h1 {
+        font-size: 1.5rem;
+    }
 }

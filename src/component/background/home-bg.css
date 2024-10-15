@@ -51,7 +51,6 @@
     margin-right: 20px; /* Space between buttons */
     font-size: 15px; /* Button font size */
 }
-
 /* Image container styles */
 .picture-home {
     display: flex;
@@ -107,7 +106,7 @@
     }
 
     .BUTTONS button {
-        width: 120px; /* Smaller button width for mobile */
+      /* Smaller button width for mobile */
         font-size: 14px; /* Adjust font size */
     }
 

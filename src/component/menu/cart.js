@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { useCart } from '../component/context/CartContextProvider.jsx'; // Adjust the import based on your file structure
+import { useCart } from '../context/CartContextProvider.jsx'; // Adjust the import based on your file structure
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -38,7 +38,6 @@ const Cart = () => {
     );
   };
   
-
   // Calculate total price of all items in the cart
   const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 

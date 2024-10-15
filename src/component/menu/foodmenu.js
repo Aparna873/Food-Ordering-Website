@@ -4,7 +4,7 @@ import All from "../../images/all.png";
 import Breakfast from "../../images/breakfast.png";
 import Lunch from "../../images/lunch.png";
 import Dinner from "../../images/dinner.png";
-import { MenuList } from "../../helpers/menu-list";
+import { MenuList } from "../helpers/menu-list";
 import EachItem from "./EachItem";
 
 export const FoodMenu = () => {

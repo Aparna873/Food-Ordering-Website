@@ -12,9 +12,8 @@ import { Navbar } from './component/nav/navbar';
 import { auth } from "./firebase-config";
 import { CreateSignin } from './component/forms/register';
 import { CreateLogin } from './component/forms/logpage';
-import  Cart  from './component/cart';
+import  Cart  from './component/menu/cart';
 import {CartContextProvider} from './component/context/CartContextProvider';
-
 
 function App() {
   const [userdata, setUserdata] = useState([]);
@@ -25,13 +24,11 @@ function App() {
       setUserdata(currentUser);
       console.log(currentUser);
     });
-
     return () => unsubscribe(); // Cleanup subscription
   }, []);
 
     return (
       <div className="App">
-      
           <AppContext.Provider value={{ userdata, setUserdata }}>
           <CartContextProvider>
             <Router>
@@ -52,6 +49,4 @@ function App() {
       </div>
     );
   }
-
-
 export default App;

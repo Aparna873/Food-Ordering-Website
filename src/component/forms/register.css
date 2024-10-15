@@ -10,7 +10,6 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 .create-form
 {
@@ -114,4 +113,28 @@ width: 70%;
     font-weight: 700;
     font-style: italic;
     color: rgb(221, 11, 11);
+}
+/* Responsive styling */
+@media (max-width: 768px) {
+    .create-form {
+        width: 100%;
+        padding: 0 10px;
+    }
+    .Register {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .image-right {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .input-1 input,
+    .input-1 button {
+        width: 80%;
+    }
+    .head-1 h1 {
+        font-size: 1.5rem;
+    }
 }
