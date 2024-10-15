@@ -45,26 +45,48 @@ Link .menuItem h1
 {
     text-decoration: none;
 }
-@media only screen and (max-width:700px){
+
+/* Responsive Design for Small Screens */
+@media only screen and (max-width: 700px) {
     .menuItem {
-    display: flex;
-    flex-direction: column;
-    width: 140px;
-    height: 150px;
+        width: 100%; /* Make it responsive to screen size */
+        max-width: 160px;
+        height: auto;
     }
-    .menuItem div{
-    background-position: center;
-    background-size: cover;
-    width: 140px;
-    height: 200px; 
+
+    .menuItem div {
+        width: 100%; /* Full width for smaller screens */
+        max-width: 160px;
+        height: 120px;
     }
-    .menuItem h1
-    {
-        margin-top: 1px;
+
+    .menuItem h1 {
+        margin-top: 3px;
+        font-size: 16px; /* Slightly smaller font */
     }
-    .menuItem p
-{
-    margin-top: 0;
-    margin-bottom: 0;
+
+    .menuItem p {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
 }
+
+@media only screen and (max-width: 480px) {
+    .menuItem {
+        max-width: 140px;
+    }
+
+    .menuItem div {
+        max-width: 140px;
+        height: 100px; /* Reduce image height on smaller screens */
+    }
+
+    .menuItem h1 {
+        font-size: 14px; /* Further reduce font size */
+    }
+
+    .menuItem p {
+        font-size: 12px;
+    }
 }
